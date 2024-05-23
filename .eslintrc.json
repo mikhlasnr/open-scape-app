@@ -8,13 +8,12 @@
     "plugin:react/recommended",
     "airbnb",
     "eslint-config-prettier",
-    "plugin:prettier/recommended"
   ],
   "overrides": [
     {
       "files": ["**/*.{js,jsx,ts,tsx}"],
       "rules": {
-        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "prettier/prettier": ["error", { "endOfLine": "auto" }], // Update this line
         "no-multiple-empty-lines": "off"
       }
     }
@@ -23,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier"], // Add "prettier" here
   "rules": {
     "linebreak-style": "off",
     "no-alert": "off",
@@ -31,21 +30,6 @@
     "import/prefer-default-export": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-props-no-spreading": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*.test.js",
-          "**/*.spec.js",
-          "**/*.config.js",
-          "**/*.config.ts",
-          "**/*.test.ts",
-          "**/*.spec.ts"
-        ],
-        "optionalDependencies": false,
-        "peerDependencies": false
-      }
-    ]
+    "react/jsx-props-no-spreading": "off"
   }
 }
