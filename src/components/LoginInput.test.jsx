@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import {
-  describe, it, expect, afterEach,
+  describe, it, expect, afterEach, vi,
  } from 'vitest';
  import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -44,4 +44,25 @@ describe('LoginInput component', () => {
     // Assert
     expect(passwordInput).toHaveValue('passwordtest');
   });
+  it('should call login function when login button is clicked', async () => {
+    // Arrange
+    const mockLogin = vi.fn();
+    render(<LoginInput login={mockLogin} />);
+    const usernameInput = await screen.getByPlaceholderText('Username');
+    await userEvent.type(usernameInput, 'usernametest');
+    const passwordInput = await screen.getByPlaceholderText('Password');
+    await userEvent.type(passwordInput, 'passwordtest');
+    const loginButton = await screen.getByRole('button', { name: 'Login' });
+  
+    // Action
+    await userEvent.click(loginButton);
+
+    // Assert
+    expect(mockLogin).toBeCalledWith({
+      id: 'usernametest',
+      password: 'passwordtest',
+    });
+
+  });
+ 
 });
